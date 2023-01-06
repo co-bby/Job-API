@@ -1,16 +1,16 @@
 const user = require('../models/User');
-const jwt = rquire('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const { UnauthenticatedError } = require('../errors');
 
 const auth = async (req, res, next) => {
-  // chck header
+  // check header
   const authHeader = req.headers.authorization;
   if (!authHeader || authHeader.startsWith('Bearer ')) {
     throw new UnauthenticatedError('No token, authorization denied');
   }
 
-  const token = authHader.split(' ')[1];
+  const token = authHeader.split(' ')[1];
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);

@@ -12,7 +12,7 @@ const updateJob = async (req, res) => {
   res.send('update job');
 };
 const deleteJob = async (req, res) => {
-  res.send('delte hob');
+  res.send('delete hob');
 };
 
 module.exports = {

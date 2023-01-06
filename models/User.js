@@ -30,7 +30,7 @@ userSchema.pre('save', async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-userSchema.methods.createtJWT = function () {
+userSchema.methods.createJWT = function () {
   return jwt.sign(
     { userId: this._id, name: this.name },
     process.env.JWT_SECRET,
@@ -40,7 +40,7 @@ userSchema.methods.createtJWT = function () {
   );
 };
 
-userSchema.methods.comparePassowrd = async function (candidatePassword) {
+userSchema.methods.comparePassword = async function (candidatePassword) {
   const isMAtch = await bcrypt.compare(candidatePassword, this.password);
   return isMAtch;
 };
